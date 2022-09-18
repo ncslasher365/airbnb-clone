@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+    Update
+{% endblock page_title %}
+
+
+{% block content %}
+
+<div class="container lg:w-5/12 md:w-6/12 xl:w-1/4 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400">
+
+    {% include "mixins/auth/auth_form.html" with form=form cta="Update Profile" %}
+
+    {% if user_obj.login_method == user_obj.LOGIN_EMAIL %}
+        <div class="mt-6">
+            <a class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" href="{% url 'users:change-password' %}">Change password</a>
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock content %}

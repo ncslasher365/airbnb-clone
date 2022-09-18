@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+
+.search-box {
+    transition: box-shadow .5s linear;
+}
+
+.nav-link {
+    @apply ml-8 border-b-2 border-white h-full flex items-center;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+.border-section {
+    @apply border-b border-gray-300 pb-8 mt-8;
+}
+
+.btn {
+    @apply text-center rounded-md py-5;
+}
+
+.btn-link {
+    @apply text-center rounded-lg py-3 font-light w-full text-white bg-red-500;
+}
+
+input,
+textarea {
+    @apply rounded-md py-5 w-full text-left border border-gray-600 px-5 mb-2 font-light;
+}
+
+select {
+    @apply rounded-md py-5 w-full text-left border border-gray-600 px-5 mb-2 font-light;
+}
+
+form .input {
+    @apply mb-2;
+}
+
+.input.has_error input {
+    @apply bg-red-200 border-gray-400 border;
+}
+
+@keyframes messageFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    5% {
+        opacity: 1;
+        transform: translateY(50px);
+    }
+
+    95% {
+        opacity: 1;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.message {
+    animation: messageFadeIn 5s ease-in-out forwards;
+}
+
+.message.error {
+    @apply bg-red-600;
+}
+
+.message.info {
+    @apply bg-blue-500;
+}
+
+.message.success {
+    @apply bg-green-500;
+}
+
+.message.warning {
+    @apply bg-yellow-500;
+}
+
+
+@tailwind utilities;

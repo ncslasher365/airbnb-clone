@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+Sign Up
+{% endblock page_title %}
+
+
+{% block search-bar %}
+
+{% endblock search-bar %}
+
+
+{% block content %}
+
+<div class="container mx-auto flex flex-col items-center md:w-6/12 xl:w-1/4 lg:w-5/12 border border-gray-400 p-6 my-10">
+    {% include "partials/social_login.html" %}
+
+    {% include "mixins/auth/auth_form.html" with form=form cta="Sign Up" %}
+
+    <div class="mt-6"><span class="mr-2">Have an account already?</span>
+        <a class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            href="{% url 'users:login' %}">Log In Now!
+        </a>
+    </div>
+</div>
+
+{% endblock content %}

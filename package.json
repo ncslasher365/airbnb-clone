@@ -1,0 +1,26 @@
+{
+  "name": "airbnb-clone",
+  "version": "1.0.0",
+  "description": "\"# airbnb-clone\"",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikitaTheSlayer/airbnb-clone.git"
+  },
+  "scripts": {
+    "css": "gulp",
+    "build": "tailwindcss -i ./assets/scss/styles.scss -o ./static/css/styles.css",
+    "watch": "tailwindcss -i ./assets/scss/styles.scss -o ./static/css/styles.css --watch"
+  },
+  "homepage": "https://github.com/NikitaTheSlayer/airbnb-clone#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.8",
+    "cssnano": "^5.1.13",
+    "gulp": "^4.0.2",
+    "gulp-csso": "^4.0.1",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.1.0",
+    "node-sass": "^7.0.1",
+    "sass": "^1.54.8",
+    "tailwindcss": "^3.1.8"
+  }
+}

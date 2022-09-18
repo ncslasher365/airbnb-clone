@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    {{user_obj.first_name}}'s Profile
+{% endblock page_title %}
+
+
+{% block content %}
+
+<div class="h-full">
+    <div class="container lg:w-5/12 md:w-6/12 xl:w-1/4 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400">
+
+        {% include 'mixins/user_avatar.html' with user=user_obj %}
+
+        <div class="flex items-center">
+            <span class="text-3xl mt-1">{{user_obj.first_name}} {{user_obj.last_name}}</span>
+            {% if user_obj.superhost %}
+                <i class="fas fa-check-circle text-teal-400 ml-3"></i>
+            {% endif %}
+        </div>
+
+        <span class="text-lg text-center mt-2 mb-5">{{user_obj.bio}}</span>
+
+        {% if user == user_obj %}
+            <a href="{% url 'users:update' %}" class="btn-link">Edit your profile</a>
+        {% endif %}
+
+    </div>
+
+    <div class="container mx-auto flex flex-col items-center">
+        {% if user_obj.rooms.count > 0 and user_obj.rooms.count != 1 %}
+           <h3 class="mb-12 text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">{{user_obj.first_name}}'s Rooms</h3>
+           <div class="flex flex-wrap mb-10">
+                {% for room in user_obj.rooms.all %}
+                    {% include "mixins/room_card.html" with room=room %}
+                {% endfor %}
+            </div> 
+        {% elif user_obj.rooms.count == 1 %}
+           <h3 class="mb-12 text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">{{user_obj.first_name}}'s Rooms</h3>
+           <div class="flex flex-wrap mb-10">
+                {% for room in user_obj.rooms.all %}
+                    {% include "mixins/room_card.html" with room=room w='w-full' %}
+                {% endfor %}
+            </div> 
+        {% else %}
+            <span class="mb-12 text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Sorry, you haven't created any rooms yet :(</span>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock content %}
