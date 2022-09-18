@@ -6,6 +6,7 @@ app_name = "rooms"
 urlpatterns = [
     path("<int:pk>/", room_views.RoomDetail.as_view(), name="detail"),
     path("<int:pk>/edit/", room_views.EditRoomView.as_view(), name="edit"),
+    path("create/", room_views.CreateRoomView.as_view(), name="create"),
     path("<int:pk>/photos/", room_views.RoomPhotosView.as_view(), name="photos"),
     path("<int:pk>/photos/add", room_views.AddPhotoView.as_view(), name="add_photo"),
     path(

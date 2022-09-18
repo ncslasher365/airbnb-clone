@@ -54,7 +54,7 @@ THIRD_PARTY_APPS = [
     "django_seed",
 ]
 
-INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS  # ADD THIRD_PARTY_APPS IN FUTURE
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

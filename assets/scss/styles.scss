@@ -85,5 +85,12 @@ form .input {
     @apply bg-yellow-500;
 }
 
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+    justify-items: center;
+}
+
 
 @tailwind utilities;

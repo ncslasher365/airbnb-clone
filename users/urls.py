@@ -19,4 +19,5 @@ urlpatterns = [
     path("login/github/callback/", user_views.github_callback, name="github_callback"),
     path("login/kakao/", user_views.kakao_login, name="kakao_login"),
     path("login/kakao/callback/", user_views.kakao_callback, name="kakao_callback"),
+    path("switch-hosting/", user_views.switch_hosting, name="switch_hosting"),
 ]
