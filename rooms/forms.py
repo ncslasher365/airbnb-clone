@@ -29,3 +29,15 @@ class SearchForm(forms.Form):
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
+
+
+class CreatePhotoForm(forms.ModelForm):
+    class Meta:
+        model = room_models.Photo
+        fields = ("caption", "file")
+
+    def save(self, room_pk, *args, **kwargs):
+        photo = super().save(commit=False)
+        room = room_models.Room.objects.get(pk=room_pk)
+        photo.room = room
+        photo.save()
