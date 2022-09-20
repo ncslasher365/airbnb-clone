@@ -2,3 +2,5 @@
  
  Backend: Python, Django, AWS, Heroku
  Frontend: HTML, CSS, Vanilla JS, Tailwind CSS, Gulp
+ 
+ SOON: Distribution on Heroku :)
