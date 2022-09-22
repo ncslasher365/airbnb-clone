@@ -1,4 +1,5 @@
 import uuid
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractUser
 from django.core.mail import send_mail
 from django.db import models
@@ -6,6 +7,7 @@ from django.conf import settings
 from django.utils.html import strip_tags
 from django.urls import reverse
 from django.shortcuts import redirect
+from core import managers as core_managers
 from django.template.loader import render_to_string
 
 # Create your models here.
@@ -20,9 +22,9 @@ class User(AbstractUser):
     GENDER_OTHER = "other"
 
     GENDER_CHOICES = (
-        (GENDER_MALE, "Male"),
-        (GENDER_FEMALE, "Female"),
-        (GENDER_OTHER, "Other"),
+        (GENDER_MALE, _("Male")),
+        (GENDER_FEMALE, _("Female")),
+        (GENDER_OTHER, _("Other")),
     )
 
     LANGUAGE_ENGLISH = "en"
@@ -70,6 +72,7 @@ class User(AbstractUser):
     login_method = models.CharField(
         max_length=50, choices=LOGIN_METHOD_CHOICES, default=LOGIN_EMAIL
     )
+    objects = core_managers.CustomUserManager()
 
     def verify_email(self):
         if self.email_verified is False:

@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
+from django.utils.translation import gettext as _
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
 
@@ -9,7 +10,7 @@ class EmailLoginOnlyView(UserPassesTestMixin):
         return self.request.user.login_method == "email"
 
     def handle_no_permission(self):
-        messages.error(self.request, "Sorry, you can't access this page :(")
+        messages.error(self.request, _("Sorry, you can't access this page :("))
         return redirect(reverse("core:home"))
 
 

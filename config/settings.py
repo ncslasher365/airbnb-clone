@@ -64,6 +64,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -154,3 +155,7 @@ EMAIL_HOST_PASSWORD = os.environ.get("MAILGUN_PASSWORD")
 EMAIL_FROM = "sexy-guy@sandbox1a7ee5d573fd42c3b8114e3465bb78d0.mailgun.org"  # >>>>>>>> IF NO DOMAIN - MESSAGE TO SPAM :(
 
 LOGIN_URL = "/users/login/"
+
+# LOCALE
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)

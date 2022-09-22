@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+    Conversation {{conversation.pk}}
+{% endblock page_title %}
+
+
+{% block content %}
+
+<div class="container mx-auto my-10 mt-32 flex justify-between min-h-50vh">
+
+    <div class="border w-1/4 p-10 ml-5">
+        <span class="mb-12 text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 block text-center w-full">Conversation between</span>
+        <div class="flex justify-between mt-10 items-center">
+            {% for user in conversation.participants.all %}
+                <div class="flex flex-col items-center">
+                    {% include 'mixins/user_avatar.html' with user=user h_and_w='w-20 h-20' text='text-xl' %}
+                    <span class="mt-2 text-gray-500">{{user.first_name}}</span>
+                </div>
+                {% if forloop.first %}
+                    <span class="font-medium text-lg">&</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="border flex-grow ml-10 p-10 flex flex-col mr-5">
+        {% if conversation.messages.count == 0 %}
+            No messages
+        {% else %}
+            {% for message in conversation.messages.all %}
+                <div class="mb-10 {% if message.creator.pk == user.pk %}
+                    self-end
+                {% endif %}">
+                    <span class="text-sm font-medium text-gray-600">{{message.creator.first_name}}</span>
+                    <div class="p-5 w-56 rounded mt-px 
+                        {% if message.creator.pk != user.pk %}
+                            bg-teal-500
+                            text-white
+                        {% else %}
+                            bg-gray-300
+                        {% endif %}
+                    ">
+                        {{message.message}}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+       <form class="mt-10" method="POST">
+            {% csrf_token %}
+            {{form.message}}
+            <button class="btn-link">Send message</button>
+       </form>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load is_booked %}
+{% load is_booked i18n on_favs %}
 
 {% block page_title %}
     {{room.name}}
@@ -30,6 +30,12 @@
                 <span class="mt-2 text-gray-500">{{room.host.first_name}}</span>
             </a>
         </div>
+        {% on_favs room as on_favs_boolean %}
+            {% if on_favs_boolean %}
+                <a href="{% url 'lists:toggle_room' room.pk %}?action=remove" class="btn-link block mb-5 w-1/4 bg-teal-500">{% trans 'Remove from favourites' %}</a>
+            {% else %}
+                <a href="{% url 'lists:toggle_room' room.pk %}?action=add" class="btn-link block mb-5 w-1/5">{% trans 'Save to favourites' %}</a>
+            {% endif %}
         <div class="flex border-section">
             <span class="mr-4 font-light">{{room.room_type}}</span>
             <span class="mr-4 font-light">{{room.guests}} guest{{room.guests|pluralize}}</span>

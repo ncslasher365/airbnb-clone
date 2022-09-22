@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from core import models as core_models
+from core import managers as core_managers
 from django_countries.fields import CountryField
 from django.utils import timezone
 from cal import Calendar
@@ -93,6 +94,7 @@ class Room(core_models.TimeStampedModel):
     amenities = models.ManyToManyField("Amenity", related_name="rooms", blank=True)
     facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
     house_rules = models.ManyToManyField("HouseRule", related_name="rooms", blank=True)
+    objects = core_managers.CustomModelManager()
 
     def __str__(self):
         return self.name

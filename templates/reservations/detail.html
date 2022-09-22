@@ -30,17 +30,28 @@
             </div>
             <div class="ml-5 flex flex-col">
                 <span class="font-medium mb-2">Contact your AirBnb Host, Baby</span>
-                <a href="#" class="font-medium text-teal-500">Send a message</a>
+                <a href="{% url 'conversations:go_conversation' reservation.room.host.pk reservation.guest.pk %}" class="font-medium text-teal-500">Send a message</a>
             </div>
         </div>
 
         <div class="py-10 px-5 mx-auto">
-            {% if reservation.status == 'pending' %}
-                <a href="#" class="btn-link block px-3 mb-5">Cancel reservation</a>
-                {% if reservation.room.host == user %}
-                    <a href="#" class="btn-link block px-3">Confirm reservation</a>
+        {% if reservation.status != 'cancelled' %}
+            {% if reservation.status == 'confirmed' and reservation.is_finished %}
+                <span class="font-medium text-2xl text-center w-full block mb-5">Write your review about the {{reservation.room.name}}</span>
+                <form action="{% url 'reviews:create' reservation.room.pk %}" method="POST" class="w-1/2 mx-auto">
+                    {% csrf_token %}
+                    {{form}}
+                    <button class="btn-link mt-5">Submit Review</button>
+                </form>
+            {% else %}
+                {% if reservation.status == 'pending' %}
+                    <a href="{% url 'reservations:edit_reservation' reservation.pk 'cancel' %}" class="btn-link block px-3 mb-5">Cancel reservation</a>
+                    {% if reservation.room.host == user %}
+                        <a href="{% url 'reservations:edit_reservation' reservation.pk 'confirm' %}" class="btn-link block px-3">Confirm reservation</a>
+                    {% endif %}
                 {% endif %}
             {% endif %}
+        {% endif %}
         </div>
     </div>
 

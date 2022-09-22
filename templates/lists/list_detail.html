@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Your Favs
+{% endblock page_title %}
+
+
+{% block content %}
+
+<div class="h-full">
+    <h3 class="mb-12 text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-center">Your Favourites</h3>
+        <div class="container mx-auto flex flex-col items-center">
+           <div class="flex flex-wrap mb-10">
+                {% if user.list.places.count > 1 %}
+                    {% for room in user.list.places.all %}
+                        {% include "mixins/room_card.html" with room=room w='w-2/4' %}
+                    {% endfor %}
+                {% endif %}
+                {% if user.list.places.count == 1 %}
+                    {% for room in user.list.places.all %}
+                        {% include "mixins/room_card.html" with room=room w='w-full' %}
+                    {% endfor %}
+                {% endif %}
+            </div> 
+        </div>
+</div>
+
+
+{% endblock content %}
