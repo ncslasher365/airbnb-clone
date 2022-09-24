@@ -8,7 +8,6 @@
                 <span
                     class="mr-2 uppercase font-medium text-xs border border-black rounded text-black px-1 py-px">Superhost</span>
                 {% endif %}
-
                 <span class="text-sm text-gray-700 block truncate">{{room.city}} / {{room.country.name}}</span>
             </div>
             <span class="text-sm flex items-center">
@@ -17,5 +16,15 @@
             </span>
         </div>
         <span class="text-black w-11/12 block truncate">{{room.name}}</span>
+        {% if room.reservations.count > 0 %}
+            <div class="overflow-hidden w-full flex-col">     
+                {% for reservation in room.reservations.all %}
+                    {% if reservation.is_in_progress %}
+                        <span class="mr-2 uppercase font-medium text-xs border border-black rounded text-black px-1 py-px">Reservation in Progress</span>
+                        <span class="text-sm text-gray-700 block truncate">{{reservation.check_in}} / {{reservation.check_out}}</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
     </a>
 </div>

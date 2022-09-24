@@ -13,7 +13,7 @@
            <div class="flex flex-wrap mb-10">
                 {% if user.list.places.count > 1 %}
                     {% for room in user.list.places.all %}
-                        {% include "mixins/room_card.html" with room=room w='w-2/4' %}
+                        {% include "mixins/room_card.html" with room=room w='w-1/4' %}
                     {% endfor %}
                 {% endif %}
                 {% if user.list.places.count == 1 %}
