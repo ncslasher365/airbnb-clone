@@ -125,7 +125,7 @@ class SearchView(View):
         return render(request, "rooms/search.html", {"form": form})
 
 
-class EditRoomView(user_mixins.LoggedInOnlyView, UpdateView):
+class EditRoomView(user_mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateView):
 
     model = room_models.Room
     fields = (
@@ -147,6 +147,7 @@ class EditRoomView(user_mixins.LoggedInOnlyView, UpdateView):
         "facilities",
     )
     template_name = "rooms/room_edit.html"
+    success_message = "Room information were successfully updated!"
 
     def get_object(self, queryset=None):  # CHECKING FOR OBJECT EQUIVALENCE
         room = super().get_object(queryset)
@@ -188,6 +189,8 @@ def delete_photo(request, room_pk, photo_pk):
 
 class EditPhotoView(user_mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateView):
 
+    model = room_models.Photo
+    fields = ("caption",)
     template_name = "rooms/photo_edit.html"
     pk_url_kwarg = "photo_pk"
     success_message = "Photo Updated"
