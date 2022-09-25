@@ -207,7 +207,7 @@
                 "sha256:d3ca6421b942f60c008f81a3541e8faf6865a28d5a9b48544b0ee4f40cac7fca"
             ],
             "index": "pypi",
-            "version": "==2.8.6"
+            "version": "==2.8.4"
         },
         "psycopg2-binary": {
             "hashes": [
@@ -272,7 +272,7 @@
                 "sha256:ffb7a888a047696e7f8240d649b43fb3644f14f0ee229077e7f6b9f9081635bd"
             ],
             "index": "pypi",
-            "version": "==2.8.6"
+            "version": "==2.8.4"
         },
         "python-dateutil": {
             "hashes": [
