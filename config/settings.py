@@ -29,6 +29,7 @@ DEBUG = bool(os.environ.get("DEBUG"))
 
 ALLOWED_HOSTS = [
     ".elasticbeanstalk.com",
+    "127.0.0.1",
 ]
 
 
