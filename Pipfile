@@ -14,6 +14,10 @@ requests = "*"
 pipenv-to-requirements = "*"
 psycopg2-binary = "*"
 sentry-sdk = "*"
+django-storages = "*"
+boto3 = "*"
+moto = "==1.3.13"
+botocore = "==1.13.20"
 
 [dev-packages]
 flake8 = "*"
