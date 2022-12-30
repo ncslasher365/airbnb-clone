@@ -2,3 +2,4 @@
  
  Backend: Python, Django, AWS, Heroku <br/>
  Frontend: HTML, CSS, Vanilla JS, Tailwind CSS, Gulp
+ P.S 31.12.2022 I didn't really notice that i used all free-tier resources for AWS :DD so, website will be stopped :(
